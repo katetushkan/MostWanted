@@ -1,0 +1,13 @@
+.table_scroll {
+  border: var(--table-border) solid 0.0625rem;
+  /*border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;*/
+  border-radius: 5px;
+  box-shadow:2px 8px 4px -6px hsla(0,0%,0%,.3);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  position: relative;
+}

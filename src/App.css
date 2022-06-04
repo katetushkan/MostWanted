@@ -1,3 +1,25 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  --fixed-column: #f3f3f3;
+  --header-text: #343434;
+  --table-border: #c3c3c3;
+}
+
+@font-face {
+  font-family: "Questrial";
+  font-weight: normal;
+  src: url("assets/font/Questrial/Questrial-Regular.ttf");
+}
+
+html, body, .App, #root {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  font-family: Questrial, monospace;
+}
 .App {
   text-align: center;
 }
@@ -26,6 +48,22 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.app_container {
+  display: flex;
+  flex-direction: column;
+  margin:  auto;
+}
+
+.app_table {
+  width: 500px;
+  height: 200px;
+}
+
+.app_list {
+  width: 500px;
+  height: 200px;
 }
 
 @keyframes App-logo-spin {

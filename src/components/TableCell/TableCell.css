@@ -1,0 +1,30 @@
+.table-cell {
+  padding: 15px;
+  text-align: center;
+  background-color: #ffffff;
+  letter-spacing: 1px;
+  max-width: 15ch;
+}
+
+.table-cell--fixed {
+  position: sticky;
+  z-index: 1;
+  background-color: var(--fixed-column);
+}
+
+.table-cell--fixed-left {
+  left: 0;
+}
+
+.table-cell--fixed-right {
+  right: 0;
+}
+
+.table-cell--header {
+  background-color: #dedede;
+}
+
+.table-cell--data {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
