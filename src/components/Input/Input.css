@@ -1,0 +1,10 @@
+.input {
+  width: 100%;
+}
+
+.input__input {
+  border: none;
+  outline: none;
+  padding: 9px 11px 9px 11px;
+  width: 100%;
+}

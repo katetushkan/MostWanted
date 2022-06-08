@@ -7,6 +7,8 @@ import VirtusalizedList from './components/VirtualizedList/VirtualizedList';
 
 import './App.css';
 import Scroll from './components/Scroll/Scroll';
+import Select from "./components/Select/Select";
+import Input from "./components/Input/Input";
 
 function App() {
 
@@ -94,14 +96,17 @@ function App() {
           </Scroll>
         </div>
 
-
         <VirtusalizedList
           className="app_virtualized-list"
           data={sortParameters}
           itemSize={20}
           margin={15}
         />
-
+        <Select
+          id="drop-down"
+          data={sortParameters}
+          className="app_select"
+        />
         <Table
           className="app_table"
           header={tableHeader}
