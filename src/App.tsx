@@ -1,9 +1,12 @@
 import React from 'react';
+import { dateFormatter } from "./services/DataFormatters/formatters";
+
 import Table, { ITableHeaderDefinition } from "./components/Table/Table";
+import List from "./components/List/List";
+import VirtusalizedList from './components/VirtualizedList/VirtualizedList';
 
 import './App.css';
-import { dateFormatter } from "./services/DataFormatters/formatters";
-import List from "./components/List/List";
+import Scroll from './components/Scroll/Scroll';
 
 function App() {
 
@@ -77,15 +80,28 @@ function App() {
     },
   ]
 
-  const sortParameters = ['age', 'name', 'bday', 'town', 'text']
+  const sortParameters = ['age', 'name', 'bday', 'town', 'text', 'ag1e', 'nam1e', 'bd1ay', 'tow1n', 'text1', 'age1', 'nam13e', 'bd3ay', 't4own', 't6ext']
 
   return (
     <div className="App">
       <div className="app_container">
-        <List
-          className="app_list"
+        <div>
+          <Scroll>
+            <List
+              className="app_list"
+              data={sortParameters}
+            />
+          </Scroll>
+        </div>
+
+
+        <VirtusalizedList
+          className="app_virtualized-list"
           data={sortParameters}
+          itemSize={20}
+          margin={15}
         />
+
         <Table
           className="app_table"
           header={tableHeader}

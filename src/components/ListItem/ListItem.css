@@ -1,0 +1,9 @@
+.list-item {
+  padding: 0.25rem;
+}
+
+.list-item:hover {
+  background-color: var(--fixed-column);
+  cursor: pointer;
+}
+
