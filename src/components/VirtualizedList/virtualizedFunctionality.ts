@@ -1,12 +1,6 @@
 import * as React from "react";
 import { useCallback, useLayoutEffect, useMemo, useState } from "react";
 
-interface IProps {
-  itemSize: number;
-  data: any[];
-  margin: number;
-}
-
 export const useVirtualizedList = <T>(itemSize: number, data: T[], margin = 0, overScroll = 3):
   [number, number, React.RefObject<HTMLDivElement>, number] => {
 
@@ -17,7 +11,7 @@ export const useVirtualizedList = <T>(itemSize: number, data: T[], margin = 0, o
   const [toIndex, setToIndex] = useState(-1)
 
   const height = useMemo(() => {
-    return (itemSize + margin) * data.length - 2 * margin;
+    return (itemSize + margin) * data.length - margin;
   }, [itemSize, margin, data])
 
   const handleScroll = useCallback((event: Event) => {
@@ -55,7 +49,7 @@ export const useVirtualizedList = <T>(itemSize: number, data: T[], margin = 0, o
       observer.unobserve(element);
       element.removeEventListener('scroll', handleScroll)
     }
-  }, [listRef, handleScroll, toIndex]);
+  }, [listRef, handleScroll, toIndex, itemSize, margin, overScroll]);
 
   return [height, fromIndex, listRef, toIndex]
 }

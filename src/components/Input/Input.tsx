@@ -2,7 +2,7 @@ import * as React from 'react';
 import clsx from 'clsx';
 
 import './Input.css';
-import { ChangeEvent, ChangeEventHandler } from "react";
+import { ChangeEvent, ChangeEventHandler, FocusEventHandler } from "react";
 
 interface IProps {
   className?: string;
@@ -12,6 +12,9 @@ interface IProps {
   onChange?: (value: string) => void;
   type?: 'text' | 'checkbox';
   children?: React.ReactNode;
+  placeholder?: string;
+  onFocus?: (event: any) => void;
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
 }
 
 const Input: React.FC<IProps> = ({
@@ -19,15 +22,20 @@ const Input: React.FC<IProps> = ({
                                    id,
                                    checked,
                                    label,
+                                   placeholder,
                                    onChange,
+                                   onFocus,
+                                   onBlur,
                                    children,
                                    type = 'text'
                                  }) => {
+
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
-      onChange(event.currentTarget.value)
+      onChange(event.currentTarget.value);
     }
   }
+
   return (
     <div className={clsx('input', className)}>
       <label
@@ -41,9 +49,11 @@ const Input: React.FC<IProps> = ({
         type={type}
         id={id}
         name={label}
-        placeholder={label}
+        placeholder={placeholder}
         checked={checked && checked}
         onChange={handleChange}
+        onFocus={onFocus}
+        onBlur={onBlur}
       />
 
     </div>

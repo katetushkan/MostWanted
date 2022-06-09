@@ -4,10 +4,13 @@ import clsx from "clsx";
 import './Icon.css';
 
 import { ReactComponent as open } from "./icons/arrow-open.svg";
-
+import { ReactComponent as check } from "./icons/icon-check.svg";
+import { ReactComponent as cancel} from "./icons/icon-cancel.svg";
 
 const icons = {
   open,
+  check,
+  cancel
 };
 
 export type IconName = keyof typeof icons;

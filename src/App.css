@@ -76,6 +76,11 @@ html, body, .App, #root {
 }
 
 .app_select {
+  /*width: 0px;*/
+}
+
+.app__option-card {
+  /*width: 200px;*/
 }
 
 @keyframes App-logo-spin {

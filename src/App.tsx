@@ -1,14 +1,13 @@
-import React from 'react';
-import { dateFormatter } from "./services/DataFormatters/formatters";
+import React, { useState } from 'react';
+import { dateFormatter } from './services/DataFormatters/formatters';
 
-import Table, { ITableHeaderDefinition } from "./components/Table/Table";
-import List from "./components/List/List";
-import VirtusalizedList from './components/VirtualizedList/VirtualizedList';
+import Table, { ITableHeaderDefinition } from './components/Table/Table';
+import List from './components/List/List';
+import VirtualizedList from './components/VirtualizedList/VirtualizedList';
+import Scroll from './components/Scroll/Scroll';
+import Select from './components/Select/Select';
 
 import './App.css';
-import Scroll from './components/Scroll/Scroll';
-import Select from "./components/Select/Select";
-import Input from "./components/Input/Input";
 
 function App() {
 
@@ -16,7 +15,7 @@ function App() {
     {
       prop: 'name',
       label: 'Name',
-      fixed: "left",
+      fixed: 'left',
     },
     {
       prop: 'age',
@@ -26,13 +25,13 @@ function App() {
     {
       prop: 'bday',
       label: 'Birthday',
-      render: (data: any) => <>{dateFormatter(data, "DD-MM/YY--78")}</> // TODO: ErrorBoundaries component
+      render: (data: any) => <>{dateFormatter(data, 'DD-MM/YY--78')}</> // TODO: ErrorBoundaries component
     },
     {
       prop: 'town', label: 'Hometown',
     },
     {
-      prop: 'city', label: "City",
+      prop: 'city', label: 'City',
     },
     {
       prop: 'text', label: 'A lot of text',
@@ -85,36 +84,37 @@ function App() {
   const sortParameters = ['age', 'name', 'bday', 'town', 'text', 'ag1e', 'nam1e', 'bd1ay', 'tow1n', 'text1', 'age1', 'nam13e', 'bd3ay', 't4own', 't6ext']
 
   return (
-    <div className="App">
-      <div className="app_container">
+    <div className='App'>
+      <div className='app_container'>
         <div>
           <Scroll>
             <List
-              className="app_list"
+              className='app_list'
               data={sortParameters}
             />
           </Scroll>
         </div>
 
-        <VirtusalizedList
-          className="app_virtualized-list"
+        <VirtualizedList
+          className='app_virtualized-list'
           data={sortParameters}
           itemSize={20}
           margin={15}
         />
         <Select
-          id="drop-down"
+          id='drop-down'
           data={sortParameters}
-          className="app_select"
+          className='app_select'
         />
         <Table
-          className="app_table"
+          className='app_table'
           header={tableHeader}
           data={tableData}
           fixedHeader={true}
           // fixedRows={[61]}
         />
       </div>
+      x
     </div>
   );
 }

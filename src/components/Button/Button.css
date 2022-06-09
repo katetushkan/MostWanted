@@ -2,6 +2,7 @@
   border-radius: 14px;
   text-align: center;
   border: none;
+  flex: 1;
   background-color: transparent;
   transition: box-shadow 100ms ease,
   transform 100ms ease,

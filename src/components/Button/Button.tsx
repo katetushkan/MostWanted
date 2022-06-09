@@ -5,7 +5,7 @@ import './Button.css';
 
 interface IProps {
   className?: string;
-  onClick?: (value: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, value?: string) => void;
   autoFocus?: boolean;
   value?: string;
   disabled?: boolean;
@@ -27,7 +27,7 @@ const Button: React.FC<IProps> = ({
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
     if (onClick) {
-      onClick(event);
+      onClick(event, value);
     }
   }
 
