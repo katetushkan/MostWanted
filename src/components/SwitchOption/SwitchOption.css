@@ -1,0 +1,53 @@
+.switch-option {
+  flex: 1;
+  padding: 1rem;
+}
+
+.switch-option__choice {
+  width: 0;
+  height: 0;
+  display: block;
+}
+
+.switch-option__img {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: transparent;
+}
+
+.switch-option__label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.switch-option__label:hover, .switch-option:hover {
+  color: var(--header-text);
+  cursor: pointer;
+}
+
+.switch-option--checked {
+  background: var(--white);
+  border-radius: 0.25rem;
+  position: relative;
+  box-shadow: 0 2px 4px 0 var(--accent-colour--62), 0 0 10px 0 var(--primary-colour--24);
+  color: var(--header-text);
+}
+
+.switch-option--checked:after {
+  display: block;
+  content: "";
+  position: absolute;
+  top: -0.125rem;
+  left: -0.125rem;
+  padding: 0.0625rem;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--accent-colour);
+
+  border-radius: 0.25rem;
+  pointer-events: none;
+
+  transition-property: opacity, filter;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.0, 0.0, 0.2, 1);
+}

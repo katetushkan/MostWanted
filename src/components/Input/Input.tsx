@@ -36,6 +36,12 @@ const Input: React.FC<IProps> = ({
     }
   }
 
+  const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+    if (onFocus && event.currentTarget.tagName !== 'BUTTON') {
+      onFocus(event)
+    }
+  }
+
   return (
     <div className={clsx('input', className)}>
       <label
@@ -52,7 +58,7 @@ const Input: React.FC<IProps> = ({
         placeholder={placeholder}
         checked={checked && checked}
         onChange={handleChange}
-        onFocus={onFocus}
+        onFocus={handleFocus}
         onBlur={onBlur}
       />
 

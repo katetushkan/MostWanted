@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { dateFormatter } from './services/DataFormatters/formatters';
 
 import Table, { ITableHeaderDefinition } from './components/Table/Table';
@@ -8,6 +8,8 @@ import Scroll from './components/Scroll/Scroll';
 import Select from './components/Select/Select';
 
 import './App.css';
+import Switch from "./components/Switch/Switch";
+import { IconName } from "./components/Icon/Icon";
 
 function App() {
 
@@ -82,6 +84,41 @@ function App() {
   ]
 
   const sortParameters = ['age', 'name', 'bday', 'town', 'text', 'ag1e', 'nam1e', 'bd1ay', 'tow1n', 'text1', 'age1', 'nam13e', 'bd3ay', 't4own', 't6ext']
+  const switchPrams = [
+    {
+      value: '0',
+      label: 'label0',
+      // img: 'check',
+    },
+    {
+      value: '1',
+      label: 'label1',
+      // img: 'check',
+    },
+    {
+      value: '2',
+      label: 'label2',
+      // img: 'check',
+    },
+  ]
+
+  const switchPramsImg = [
+    {
+      value: '0',
+      label: 'label',
+      img: 'check' as IconName,
+    },
+    {
+      value: '1',
+      label: 'label',
+      img: 'check' as IconName,
+    },
+    {
+      value: '2',
+      label: 'label',
+      img: 'check' as IconName,
+    },
+  ]
 
   return (
     <div className='App'>
@@ -100,6 +137,16 @@ function App() {
           data={sortParameters}
           itemSize={20}
           margin={15}
+        />
+        <Switch
+          options={switchPrams}
+          className='app_switch'
+          checked={'1'}
+        />
+        <Switch
+          options={switchPramsImg}
+          className='app_switch_img'
+          checked={'0'}
         />
         <Select
           id='drop-down'

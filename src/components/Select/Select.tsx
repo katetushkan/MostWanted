@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import clsx from 'clsx';
 
 import Input from '../Input/Input';
 import Icon from '../Icon/Icon';
 import Button from '../Button/Button';
 import { VirtualizedOptionList } from "../VirtualizedList/VirtualizedList";
+import SelectedOption from "../SelectedOption/SelectedOption";
 
 import './Select.css';
-import SelectedOption from "../SelectedOption/SelectedOption";
 
 interface IProps {
   className?: string;
@@ -20,6 +20,7 @@ const Select: React.FC<IProps> = ({ className, data, id }) => {
 
   const [isOpen, setIsOpen] = useState(false)
   const [selected, setSelected] = useState<string[]>([])
+  const scrollPanel = React.createRef<HTMLDivElement>();
 
   const removeValue = (value: string) => {
     let filtered = selected.filter((elem) => {
@@ -33,13 +34,12 @@ const Select: React.FC<IProps> = ({ className, data, id }) => {
 
     if (checked) {
       setSelected([...selected, value]);
-    }
-    else {
+    } else {
       removeValue(value);
     }
   }
 
-  const handleToggle = (event: any) => {
+  const handleToggle = (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement> ) => {
     setIsOpen(!isOpen);
   }
 
@@ -47,23 +47,63 @@ const Select: React.FC<IProps> = ({ className, data, id }) => {
     setIsOpen(true);
   }
 
+  const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+    setIsOpen(false);
+  }
+
   const handleClick = (value: string) => {
     removeValue(value);
   }
 
+  useLayoutEffect(() => {
+    if (!scrollPanel.current) {
+      return;
+    }
+
+    const element = scrollPanel.current;
+
+    const handleScroll = () => {
+
+      if (element.scrollLeft > 0 && !element.classList.contains("before")) {
+        element.classList.add("before");
+      }
+
+      if (element.scrollLeft === 0) {
+        element.classList.remove("before");
+        element.classList.add("after");
+      }
+
+      if (element.scrollLeft < element.clientWidth && !element.classList.contains("after")) {
+        element.classList.add("after");
+      }
+
+      if (Math.floor(element.scrollLeft + element.clientWidth) === element.scrollWidth) {
+        element.classList.remove("after");
+      }
+    }
+
+    element.addEventListener('scroll', handleScroll)
+
+    return () => {
+      element.removeEventListener('scroll', handleScroll)
+    }
+  }, [scrollPanel]);
+
   return (
     <div className={clsx('select', className)}>
-      <div className='select__select-panel'>
-        {
-         selected.map((item) =>
-           <SelectedOption
-             key={item}
-             option={item}
-             icon={<Icon type='cancel' className="select__select-panel__icon"/>}
-             onClick={handleClick}
-           />
-         )
-        }
+      <div className="select__select-panel__window">
+        <div className='select__select-panel after' ref={scrollPanel}>
+          {
+            selected.map((item) =>
+              <SelectedOption
+                key={item}
+                option={item}
+                icon={<Icon type='cancel' className="select__select-panel__icon"/>}
+                onClick={handleClick}
+              />
+            )
+          }
+        </div>
       </div>
       <div className='search-panel'>
         <div className='search-panel__search-input'>
@@ -71,7 +111,7 @@ const Select: React.FC<IProps> = ({ className, data, id }) => {
             id='search-input'
             placeholder='Select values...'
             onFocus={handleFocus}
-            // onBlur={handleBlur}
+            onBlur={handleBlur}
           />
         </div>
         <div className='search-panel__button'>

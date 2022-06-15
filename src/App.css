@@ -8,8 +8,10 @@
   --table-border: #c3c3c3;
   --accent-colour: #C0EDB9;
   --primary-colour: #707070;
-  --primary-colour--68: rgba(112, 112, 112, 0.24);
+  --primary-colour--68: rgba(112, 112, 112, 0.68);
   --accent-colour--62: rgba(192, 237, 185, 0.62);
+  --primary-colour--24: rgba(112, 112, 112, 0.24);
+  --white: #ffffff;
 }
 
 @font-face {
@@ -76,7 +78,7 @@ html, body, .App, #root {
 }
 
 .app_select {
-  /*width: 0px;*/
+  width: 200px;
 }
 
 .app__option-card {
