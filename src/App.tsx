@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { dateFormatter } from './services/DataFormatters/formatters';
 
 import Table, { ITableHeaderDefinition } from './components/Table/Table';
@@ -10,6 +10,7 @@ import Select from './components/Select/Select';
 import './App.css';
 import Switch from "./components/Switch/Switch";
 import { IconName } from "./components/Icon/Icon";
+import Toggle from "./components/Toggle/Toggle";
 
 function App() {
 
@@ -119,7 +120,7 @@ function App() {
       img: 'check' as IconName,
     },
   ]
-
+  const [toggleState, setToggleState] = useState(false);
   return (
     <div className='App'>
       <div className='app_container'>
@@ -147,6 +148,14 @@ function App() {
           options={switchPramsImg}
           className='app_switch_img'
           checked={'0'}
+        />
+        <Toggle
+          className='app_toggle'
+          value={'toggle'}
+          name={'toggle'}
+          label={'WHere did u go?'}
+          checked={toggleState}
+          onToggle={(value) => setToggleState(value)}
         />
         <Select
           id='drop-down'

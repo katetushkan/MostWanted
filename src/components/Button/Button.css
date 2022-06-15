@@ -1,5 +1,4 @@
 .button {
-  border-radius: 14px;
   text-align: center;
   border: none;
   flex: 1;
@@ -8,6 +7,13 @@
   transform 100ms ease,
   opacity 100ms ease,
   filter 100ms ease;
+
+  cursor: pointer;
+}
+
+.button:focus {
+  outline: none;
+  border: none;
 }
 
 .button--disabled {
