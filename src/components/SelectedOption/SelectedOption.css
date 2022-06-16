@@ -5,6 +5,11 @@
   width: fit-content;
 }
 
+.selected-option:hover {
+  transform: scale(1.05);
+  transition: transform 300ms ease-in-out;
+}
+
 .selected-option__button {
   display: flex;
   flex-direction: row;

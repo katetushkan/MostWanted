@@ -1,16 +1,15 @@
 import * as React from 'react';
-import { useLayoutEffect, useState } from "react";
+import { useState } from "react";
 import clsx from 'clsx';
 
 import Input from '../Input/Input';
 import Icon from '../Icon/Icon';
 import Button from '../Button/Button';
 import { VirtualizedOptionList } from "../VirtualizedList/VirtualizedList";
-import SelectedOption from "../SelectedOption/SelectedOption";
-
-import { useFocus } from "./focusFunctionality";
-import './Select.css';
 import ChipsList from "../ChipsList/ChipsList";
+import { useFocus } from "./focusFunctionality";
+
+import './Select.css';
 
 interface IProps {
   className?: string;
@@ -19,12 +18,16 @@ interface IProps {
   onSearch?: (value: string) => void;
 }
 
-const Select: React.FC<IProps> = ({ className, data, id, onSearch }) => {
+const Select: React.FC<IProps> = ({
+                                    className,
+                                    data,
+                                    id,
+                                    onSearch
+                                  }) => {
 
   const [isOpen, setIsOpen] = useState(false)
   const [selected, setSelected] = useState<string[]>([])
   const [dataList, setDataList] = useState(data);
-  const scrollPanel = React.createRef<HTMLDivElement>();
 
   const handleFocusChanged = (focused?: boolean) => {
     if (!focused) {

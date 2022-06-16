@@ -6,8 +6,9 @@
   transition: background-color .5s ease;
 }
 
-.switch-option__label:focus-within {
-  background-color: var(--accent-colour--62);
+.switch-option:focus-within {
+  transform: scale(1.05);
+  transition: transform 300ms ease-in-out;
 }
 
 .switch-option__choice {

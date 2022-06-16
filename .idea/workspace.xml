@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c0ff2fe-0cf1-4474-8d10-9f574a9f11d3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Button/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Button/Button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ChipsList/ChipsList.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ChipsList/ChipsList.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/OptionCard/OptionCard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/OptionCard/OptionCard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Select/Select.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Select/Select.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Select/Select.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Select/Select.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/SelectedOption/SelectedOption.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SelectedOption/SelectedOption.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SwitchOption/SwitchOption.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SwitchOption/SwitchOption.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/VirtualizedList/VirtualizedList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/VirtualizedList/VirtualizedList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/VirtualizedList/virtualizedFunctionality.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/VirtualizedList/virtualizedFunctionality.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +68,7 @@
       <workItem from="1655215511836" duration="21000" />
       <workItem from="1655222661557" duration="4867000" />
       <workItem from="1655287281955" duration="11705000" />
-      <workItem from="1655372258817" duration="10913000" />
+      <workItem from="1655372258817" duration="11300000" />
     </task>
     <servers />
   </component>

@@ -1,7 +1,5 @@
 .option-card {
-  /*position: relative;*/
   display: flex;
-  /*height: 2.5rem;*/
   background-color: #ffffff;
   margin: 0.315rem 0.25rem;
 }
