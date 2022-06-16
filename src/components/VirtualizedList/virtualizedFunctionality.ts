@@ -11,7 +11,7 @@ export const useVirtualizedList = <T>(itemSize: number, data: T[], margin = 0, o
   const [toIndex, setToIndex] = useState(-1)
 
   const height = useMemo(() => {
-    return (itemSize + margin) * data.length - margin;
+    return Math.max(0, (itemSize + margin) * data.length - margin);
   }, [itemSize, margin, data])
 
   const handleScroll = useCallback((event: Event) => {

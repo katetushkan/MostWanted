@@ -1,0 +1,21 @@
+.before::before{
+  width: 0.5rem;
+  height: 100%;
+  position: absolute;
+  content: "";
+  top: 0;
+  left: -2px;
+  pointer-events: none;
+  background: linear-gradient(90deg, #FFFFFF 0%, transparent 100%);
+}
+
+.after::after{
+  width: 0.5rem;
+  height: 100%;
+  position: absolute;
+  content: "";
+  top: 0;
+  right: -1px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent 0%, #FFFFFF 100%);
+}

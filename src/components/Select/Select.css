@@ -10,7 +10,7 @@
   border: 1px solid transparent;
 }
 
-.search-panel:focus-within {
+.select:focus-within .search-panel {
   border: 1px solid var(--accent-colour);
   filter: drop-shadow(0px 0px 1px var(--accent-colour));
 }
@@ -61,7 +61,7 @@
   z-index: 10;
 }
 .select__option-list {
-  height: 6.5rem;
+  max-height: 6.5rem;
   border: 1px solid var(--primary-colour);
   margin: 6px 4px 4px;
   border-radius: 0.25rem;
@@ -73,7 +73,6 @@
 .option-list--close {
   /*display: none;*/
   clip-path: inset(0px 100% 100% 100%);
-
 }
 
 .select__select-panel {
@@ -84,35 +83,9 @@
   overflow: hidden;
   overflow-x: auto;
   gap: 0.75rem;
-  /*position: relative;*/
+  min-height: 2.1875rem;
 }
 .select__select-panel__window {
   position: relative;
-}
-
-.before::before{
-  width: 0.5rem;
-  height: 100%;
-  position: absolute;
-  content: "";
-  top: 0;
-  left: -2px;
-  pointer-events: none;
-  background: linear-gradient(90deg, #FFFFFF 0%, transparent 100%);
-}
-
-.after::after{
-  width: 0.5rem;
-  height: 100%;
-  position: absolute;
-  content: "";
-  top: 0;
-  right: -1px;
-  pointer-events: none;
-  background: linear-gradient(90deg, transparent 0%, #FFFFFF 100%);
-}
-.select__select-panel__icon {
-  width:0.75rem;
-  height: 0.75rem;
 }
 

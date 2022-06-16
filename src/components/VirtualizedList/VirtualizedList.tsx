@@ -72,7 +72,7 @@ export const VirtualizedOptionList: React.FC<IPropsOption> = ({
                                                                 checked
                                                               }) => {
 
-  const [height, fromIndex, listRef, toIndex] = useVirtualizedList(itemSize, data, margin)
+  const [height, fromIndex, listRef, toIndex] = useVirtualizedList(itemSize, data, margin);
 
   return (
     <div

@@ -12,6 +12,7 @@ interface IProps {
   type?: 'normal' | 'accent';
   to?: string;
   children?: React.ReactNode;
+  tabIndex?: number;
 }
 
 const Button: React.FC<IProps> = ({
@@ -22,7 +23,8 @@ const Button: React.FC<IProps> = ({
                                     disabled,
                                     type,
                                     to,
-                                    children
+                                    children,
+                                    tabIndex
                                   }) => {
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
@@ -55,6 +57,7 @@ const Button: React.FC<IProps> = ({
         onClick={handleClick}
         value={value}
         disabled={disabled}
+        tabIndex={tabIndex}
       >
         {children}
       </button>

@@ -8,19 +8,31 @@ import Button from '../Button/Button';
 import { VirtualizedOptionList } from "../VirtualizedList/VirtualizedList";
 import SelectedOption from "../SelectedOption/SelectedOption";
 
+import { useFocus } from "./focusFunctionality";
 import './Select.css';
+import ChipsList from "../ChipsList/ChipsList";
 
 interface IProps {
   className?: string;
-  data?: any[];
+  data: any[];
   id: string;
+  onSearch?: (value: string) => void;
 }
 
-const Select: React.FC<IProps> = ({ className, data, id }) => {
+const Select: React.FC<IProps> = ({ className, data, id, onSearch }) => {
 
   const [isOpen, setIsOpen] = useState(false)
   const [selected, setSelected] = useState<string[]>([])
+  const [dataList, setDataList] = useState(data);
   const scrollPanel = React.createRef<HTMLDivElement>();
+
+  const handleFocusChanged = (focused?: boolean) => {
+    if (!focused) {
+      setIsOpen(false);
+    }
+  }
+
+  let input = useFocus(handleFocusChanged);
 
   const removeValue = (value: string) => {
     let filtered = selected.filter((elem) => {
@@ -31,7 +43,6 @@ const Select: React.FC<IProps> = ({ className, data, id }) => {
   }
 
   const handleChecked = (checked: boolean, value: string) => {
-
     if (checked) {
       setSelected([...selected, value]);
     } else {
@@ -39,7 +50,7 @@ const Select: React.FC<IProps> = ({ className, data, id }) => {
     }
   }
 
-  const handleToggle = (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement> ) => {
+  const handleToggle = (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
     setIsOpen(!isOpen);
   }
 
@@ -47,63 +58,23 @@ const Select: React.FC<IProps> = ({ className, data, id }) => {
     setIsOpen(true);
   }
 
-  const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
-    setIsOpen(false);
-  }
-
-  const handleClick = (value: string) => {
+  const handleRemove = (value: string) => {
     removeValue(value);
   }
 
-  useLayoutEffect(() => {
-    if (!scrollPanel.current) {
-      return;
-    }
-
-    const element = scrollPanel.current;
-
-    const handleScroll = () => {
-
-      if (element.scrollLeft > 0 && !element.classList.contains("before")) {
-        element.classList.add("before");
-      }
-
-      if (element.scrollLeft === 0) {
-        element.classList.remove("before");
-        element.classList.add("after");
-      }
-
-      if (element.scrollLeft < element.clientWidth && !element.classList.contains("after")) {
-        element.classList.add("after");
-      }
-
-      if (Math.floor(element.scrollLeft + element.clientWidth) === element.scrollWidth) {
-        element.classList.remove("after");
-      }
-    }
-
-    element.addEventListener('scroll', handleScroll)
-
-    return () => {
-      element.removeEventListener('scroll', handleScroll)
-    }
-  }, [scrollPanel]);
+  const handleSearch = (value: string) => {
+    const searchedValues = data.filter((element) => element.includes(value))
+    setDataList(searchedValues);
+  }
 
   return (
-    <div className={clsx('select', className)}>
+    <div className={clsx('select', className)} ref={input as React.Ref<HTMLDivElement>}>
       <div className="select__select-panel__window">
-        <div className='select__select-panel after' ref={scrollPanel}>
-          {
-            selected.map((item) =>
-              <SelectedOption
-                key={item}
-                option={item}
-                icon={<Icon type='cancel' className="select__select-panel__icon"/>}
-                onClick={handleClick}
-              />
-            )
-          }
-        </div>
+        <ChipsList
+          className='select__select-panel'
+          selected={selected}
+          handleClick={handleRemove}
+        />
       </div>
       <div className='search-panel'>
         <div className='search-panel__search-input'>
@@ -111,12 +82,13 @@ const Select: React.FC<IProps> = ({ className, data, id }) => {
             id='search-input'
             placeholder='Select values...'
             onFocus={handleFocus}
-            onBlur={handleBlur}
+            onChange={handleSearch}
           />
         </div>
         <div className='search-panel__button'>
           <Button
             onClick={handleToggle}
+            tabIndex={-1}
           >
           <span className={clsx('select__icon', {
             'select__icon--open': isOpen,
@@ -132,10 +104,10 @@ const Select: React.FC<IProps> = ({ className, data, id }) => {
           'option-list--open': isOpen,
           'option-list--close': !isOpen,
         })}>
-        {data &&
+        {dataList.length > 0 &&
         <VirtualizedOptionList
             className='select__option-list'
-            data={data}
+            data={dataList}
             itemSize={40}
             margin={5}
             onChecked={handleChecked}

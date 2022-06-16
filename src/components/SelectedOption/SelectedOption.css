@@ -2,7 +2,7 @@
   display:flex;
   flex-direction: row;
   justify-content: space-between;
-  width:fit-content;
+  width: fit-content;
 }
 
 .selected-option__button {
@@ -13,4 +13,9 @@
   padding: 0.35rem 0.5rem;
   background-color: var(--accent-colour);
   border-radius: 0.25rem;
+}
+
+.selected-option__icon {
+  width:0.75rem;
+  height: 0.75rem;
 }

@@ -9,10 +9,12 @@
 .switch-option__label:focus-within {
   background-color: var(--accent-colour--62);
 }
+
 .switch-option__choice {
   width: 0;
   height: 0;
   display: block;
+  -webkit-appearance: none;
 }
 
 .switch-option__img {
@@ -26,6 +28,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .switch-option__label:hover, .switch-option:hover {
   color: var(--header-text);
   cursor: pointer;
